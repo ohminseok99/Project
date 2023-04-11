@@ -4,10 +4,12 @@ from django.http import HttpResponseRedirect
 from user.forms import LoginForm, RegisterForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth import logout
+from product.models import Product
 
 
 def index(request):
-    return render(request, 'index.html', {'email': request.session.get('user')})
+    goods = Product.objects.all().order_by('pk')
+    return render(request, 'index.html', {'email': request.session.get('user'), 'goods':goods})
 
 
 class RegisterView(FormView):

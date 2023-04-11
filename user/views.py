@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic.edit import FormView
 from django.http import HttpResponseRedirect
 from user.forms import LoginForm, RegisterForm
 from django.contrib.auth import login, authenticate
+from django.contrib.auth import logout
 
 
 def index(request):
@@ -25,3 +26,7 @@ class LoginView(FormView):
         self.request.session['user'] = form.email  # sessuib에 키값 user를 생성하는데요. 그 값은 form의 email속성에서 가져다와요.
 
         return super().form_valid(form)  # 부모클래스 FormView에 있는 form_valid()메소드를 호출합니다.
+
+def logoutview(request):
+    logout(request)
+    return redirect('/jwy')

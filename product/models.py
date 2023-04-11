@@ -4,6 +4,7 @@ from django.db import models
 class Product(models.Model):
     name=models.CharField(max_length=256, verbose_name='상품명')
     price=models.IntegerField(verbose_name="상품가격")
+    image = models.ImageField(upload_to='products/%Y/%m/%d', blank=True)
     description=models.TextField(verbose_name="상품설명")
     stock = models.IntegerField(verbose_name="재고")
     createDate = models.DateTimeField(auto_now_add=True, verbose_name='등록날짜')

@@ -13,3 +13,12 @@ textarea{
 input[type=submit]{
     margin-top:10px;
 }
+img{
+    display:block;
+    width:300px;
+    height:300px;
+}
+.img-detail{
+    border-radius:20px;
+    border: 2px solid #888;
+}

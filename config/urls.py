@@ -23,5 +23,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('jwy/', include('user.urls')),
     path('jwy/product/detail/', include('product.urls')),
+    path('kakaoPay/', include('order.urls')),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

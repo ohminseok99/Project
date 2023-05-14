@@ -31,4 +31,4 @@ class LoginView(FormView):
 
 def logoutview(request):
     logout(request)
-    return redirect('/jwy')
+    return redirect('/jwy'),

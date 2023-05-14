@@ -51,7 +51,7 @@
                   <form action="/kakaoPay/kakaoPayLogic" method="get" style="width:100%; padding-right:400px;">
                     {% csrf_token %}
                     <input type="hidden" name="name" value="{{product.name}}">
-                    <input type="hidden" name="price" value="{{product.sprice}}">
+                    <input type="hidden" name="price" value="{{product.price}}">
                     <button type="submit" class="btn btn-secondary">카카오페이 결제</button>
                 </form>
               </li>

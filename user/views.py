@@ -15,13 +15,13 @@ def index(request):
 class RegisterView(FormView):
     template_name = 'register.html'  # template_name이라고 하면 html파일이조? 이게 부모인 FormView에서 가져온거에요.
     form_class = RegisterForm  # 위의 임포트든 된것을 form_class의 값으로 할당해줌.
-    success_url = '/jwy'  # 회원가입이 정상적으로 된 경우 해당 url로 화면 전환이 이루어짐
+    success_url = '/'  # 회원가입이 정상적으로 된 경우 해당 url로 화면 전환이 이루어짐
 
 
 class LoginView(FormView):
     template_name = 'login.html'  # template_name이라고 하면 html파일이조? 이게 부모인 FormView에서 가져온거에요.
     form_class = LoginForm
-    success_url = '/jwy'
+    success_url = '/'
 
     # LoginView.as_view()가 실행될 때
     def form_valid(self, form):  # form유효성(데이터가 정상일때)을 마쳤을 때 사용해요. 로그인이 정상적으로 되었는 경우!
@@ -31,4 +31,4 @@ class LoginView(FormView):
 
 def logoutview(request):
     logout(request)
-    return redirect('/jwy'),
+    return redirect('/')

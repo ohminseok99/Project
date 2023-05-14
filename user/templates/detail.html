@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+{% if email == None %}
+<script>
+        alert("로그인 후 이용해주세요");
+        location.replace('/jwy');
+
+</script>
+{% endif %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+    <div class="container">
+        <a class="navbar-brand" href="/jwy">JWY</a>
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto me-1 mb-2 mb-lg-0">
+                <li class="nav-item">
+                    {% if email %}
+                    <a class="nav-link" href="/jwy/logout">{{ email }} (로그아웃)</a>
+                    {% else %}
+                    <a class="nav-link" href="/jwy/login">로그인</a>
+                    {% endif %}
+                </li>
+                <li class="nav-item">
+                    {% if not email %}
+                    <a class="nav-link" href="/jwy/join">회원가입</a>
+                    {% endif %}
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div>
+    <div class="container py-5">
+        <div class="d-flex justify-content-between px-5">
+            <div style="width:40%">
+                <img src="{{product.image.url}}" style="width:100%; height:400px;" class="img-detail">
+            </div>
+            <ul class="list-group list-group-flush d-flex flex-column justify-content-center">
+              <li class="list-group-item"><h1>{{product.name}}</h1></li>
+              <li class="list-group-item"><span class="badge bg-secondary p-2">Description</span><br>{{product.description|linebreaks}}</li>
+              <li class="list-group-item"><span class="badge bg-secondary p-2">Price</span>&nbsp;&nbsp;{{product.price}}</li>
+              <li class="list-group-item">
+                  <form action="/kakaoPay/kakaoPayLogic" method="get" style="width:100%; padding-right:400px;">
+                    {% csrf_token %}
+                    <input type="hidden" name="name" value="{{product.name}}">
+                    <input type="hidden" name="price" value="{{product.sprice}}">
+                    <button type="submit" class="btn btn-secondary">카카오페이 결제</button>
+                </form>
+              </li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

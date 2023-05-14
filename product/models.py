@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 class Product(models.Model):
@@ -16,3 +17,6 @@ class Product(models.Model):
         db_table = 'my_product'
         verbose_name = '상품'
         verbose_name_plural='상품'
+
+    def get_absolute_url(self):
+        return reverse('product:product_detail', args=[self.id])

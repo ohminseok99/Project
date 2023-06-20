@@ -5,7 +5,7 @@ def kakaoPay(request):
     return render(request,'kakaopay/kakao.html')
 
 def kakaoPayLogic(request):
-    _admin_key = os.environ.get('ADMIN_KEY')
+    _admin_key = 'be2190ad4b18f87304163c08961dfb5a'
     _url = f'https://kapi.kakao.com/v1/payment/ready'
     _headers = {
         'Authorization': f'KakaoAK {_admin_key}',
